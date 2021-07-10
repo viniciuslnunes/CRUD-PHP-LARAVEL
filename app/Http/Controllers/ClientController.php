@@ -20,7 +20,8 @@ class ClientController extends Controller
 
         public function index()
     {
-        return view('site.clients.index');
+        $clientes = Client::all();
+        return view('site.clients.index', compact("clientes"));
     }
 
     /**
@@ -30,7 +31,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('site.clients.create');
     }
 
     /**
@@ -41,7 +42,17 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'nome' => ['required', 'unique:clients', 'max:150'],
+            'cpf' => ['required', 'unique:clients', 'max:14'],
+            'data_nasc' => ['required'],
+            'data_cadastro' => ['required'],
+            'renda' => ['required', 'max:15'],
+        ]);
+
+        $clientes = $request->all();
+        Client::create($clientes);
+        return redirect()->route('clientes.index')->with('success', 'Cliente cadastrado com sucesso');
     }
 
     /**
@@ -50,9 +61,10 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function show(Client $client)
+    public function show($id)
     {
-        //
+        $clientes = Client::findOrFail($id);
+        return view('site.clients.show', compact('clientes'));
     }
 
     /**
@@ -61,21 +73,31 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit(Client $client)
+    public function edit($id)
     {
-        //
+        $clientes = Client::find($id);
+        return view('site.clients.edit', compact('clientes'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(Request $request, $id)
     {
-        //
+        $clientes = Client::find($id);
+        request()->validate([
+            'nome_empresa'      => ['required',  'max:100'],
+            'cnpj'              => ['required', 'max:18'],
+            'nome_responsavel'  => ['required', 'max:100'],
+            'email'             => ['required', 'max:100'],
+            'celular'           => ['required', 'max:15'],
+        ]);
+        $clientes->update($request->all());
+        return redirect()->route('clientes.index')->with('success', 'Cliente atualizado com sucesso');
+
     }
 
     /**
@@ -84,8 +106,9 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client)
+    public function destroy(Request $request, Client $cliente)
     {
-        //
+        $cliente->delete();
+        return redirect()->route('clientes.index')->with('success', 'Cliente deletado com sucesso');    
     }
 }

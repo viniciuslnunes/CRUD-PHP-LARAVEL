@@ -2,59 +2,75 @@
 @section('title','Cadastrar Cliente')
 
 @section('content')
-        <div class="container mx-auto mt-4">
-            <form class="row g-3 border p-4 rounded mt-4">
-                <div class="col-md-6 col-lg-4 mt-0">
-                    <label for="nome" class="form-label">Nome: </label>
-                    <input
-                        type="nome"
-                        class="form-control"
-                        id="nome"
-                        required
-                        maxlength="150"
-                    />
-                </div>
-                <div class="col-md-6 col-lg-4 mt-0">
-                    <label for="cpf" class="form-label">CPF: </label>
-                    <input
-                        class="form-control"
-                        id="cpf"
-                        type="number"
-                        maxlength="10"
-                    />
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <label for="date" class="form-label"
-                        >Data de nascimento:
-                    </label>
-                    <input
-                        type="date"
-                        class="form-control"
-                        id="date"
-                        required
-                    />
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <label for="cadastro" class="form-label"
-                        >Data de cadastro:
-                    </label>
-                    <input
-                        type="date"
-                        class="form-control"
-                        id="cadastro"
-                        required
-                    />
-                </div>
-                <div class="col-12">
-                    <label for="renda" class="form-label">Renda: </label>
-                    <input type="number" class="form-control" id="renda" />
-                </div>
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary">
-                        Cadastro
-                    </button>
-                </div>
-            </form>
-        </div>     
-    @endsection
+<!-- <div class="container mx-auto mt-4">
+            <table
+                class="
+                    table table-dark table-hover table-striped table-responsive
+                "
+            >
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Renda</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">Mark</td>
+                        <td><div class="badge-ui bg-danger">R$ 512</div></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Jacob</td>
+                        <td>
+                            <div class="badge-ui bg-warning text-dark">
+                                R$ 1.200
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Tanaca</td>
+                        <td><div class="badge-ui bg-success">R$ 6.000</div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> -->
+<table class="table table-striped table-bordered mt-4">
+    @if (Session::has('success'))
+    <div class="contact-form-success alert alert-success mt-4">
+        {{ Session::get('success') }}
+    </div>
+    @endif
 
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Cliente</th>
+            <th scope="col">CNPJ</th>
+            <th scope="col">Nome do responsável</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Celular</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($clientes as $cliente)
+        <tr>
+            <td>{{$cliente->nome_empresa}}</td>
+            <td>{{$cliente->cnpj}}</td>
+            <td>{{$cliente->nome_responsavel}}</td>
+            <td>{{$cliente->email}}</td>
+            <td>{{$cliente->celular}}</td>
+            <td>
+                <form action="{{ route('clientes.destroy', $cliente->id)}}" method="post">
+                    <a href="{{ route('clientes.show', $cliente->id)}}" class="btn btn-primary btn-sm">Detalhes</a>
+                    <a href="{{ route('clientes.edit', $cliente->id)}}" class="btn btn-primary btn-sm">Editar</a>
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger btn-sm" type="submit">Deletar</button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+
+@endsection

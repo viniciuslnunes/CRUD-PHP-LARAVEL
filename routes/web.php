@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/', 'ClientController');
+Route::resource('clientes', 'ClientController');
+Route::resource('relatorios', 'ReportController');
+Route::get('/', 'ClientController@index');
+
 
 Auth::routes();
 
