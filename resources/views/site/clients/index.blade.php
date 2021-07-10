@@ -43,22 +43,16 @@
 
     <thead class="thead-dark">
         <tr>
-            <th scope="col">Cliente</th>
-            <th scope="col">CNPJ</th>
-            <th scope="col">Nome do responsável</th>
-            <th scope="col">E-mail</th>
-            <th scope="col">Celular</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Renda</th>
             <th scope="col">Ações</th>
         </tr>
     </thead>
     <tbody>
         @foreach($clientes as $cliente)
         <tr>
-            <td>{{$cliente->nome_empresa}}</td>
-            <td>{{$cliente->cnpj}}</td>
-            <td>{{$cliente->nome_responsavel}}</td>
-            <td>{{$cliente->email}}</td>
-            <td>{{$cliente->celular}}</td>
+            <td>{{$cliente->nome}}</td>
+            <td>{{$cliente->renda}}</td>
             <td>
                 <form action="{{ route('clientes.destroy', $cliente->id)}}" method="post">
                     <a href="{{ route('clientes.show', $cliente->id)}}" class="btn btn-primary btn-sm">Detalhes</a>

@@ -47,7 +47,7 @@ class ClientController extends Controller
             'cpf' => ['required', 'unique:clients', 'max:14'],
             'data_nasc' => ['required'],
             'data_cadastro' => ['required'],
-            'renda' => ['required', 'max:15'],
+            'renda' => ['required', 'max:100000'],
         ]);
 
         $clientes = $request->all();
@@ -89,11 +89,11 @@ class ClientController extends Controller
     {
         $clientes = Client::find($id);
         request()->validate([
-            'nome_empresa'      => ['required',  'max:100'],
-            'cnpj'              => ['required', 'max:18'],
-            'nome_responsavel'  => ['required', 'max:100'],
-            'email'             => ['required', 'max:100'],
-            'celular'           => ['required', 'max:15'],
+            'nome' => ['max:150'],
+            'cpf' => [ 'max:14'],
+            'data_nasc' => ['required'],
+            'data_cadastro' => ['required'],
+            'renda' => ['max:100000'],
         ]);
         $clientes->update($request->all());
         return redirect()->route('clientes.index')->with('success', 'Cliente atualizado com sucesso');

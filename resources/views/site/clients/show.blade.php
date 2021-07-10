@@ -9,19 +9,19 @@
             <tbody>
                 <tr>
                     <td class="title">Nome do cliente:</td>
-                    <td>{{$clientes->nome_empresa}}</td>
+                    <td>{{$clientes->nome}}</td>
                 </tr>
                 <tr>
-                    <td class="title">CNPJ:</td>
+                    <td class="title">CPF:</td>
                     <td>{{$clientes->cnpj}}</td>
-                    <td class="title">Responsável:</td>
-                    <td>{{$clientes->nome_responsavel}}</td>
+                    <td class="title">Data de Nascimento:</td>
+                    <td>{{$clientes->data_nasc}}</td>
                 </tr>
                 <tr>
-                    <td class="title">Email:</td>
-                    <td>{{$clientes->email}}</td>
-                    <td class="title">Celular:</td>
-                    <td>{{$clientes->celular}}</td>
+                    <td class="title">Data de Cadastro:</td>
+                    <td>{{$clientes->data_cadastro}}</td>
+                    <td class="title">Renda:</td>
+                    <td>{{$clientes->renda}}</td>
                 </tr>
             </tbody>
         </table>

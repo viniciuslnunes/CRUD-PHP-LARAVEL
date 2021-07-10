@@ -3,7 +3,7 @@
 
 
 @section('content')
-<div class="card">
+<div class="card mt-4">
     <div class="card-body">
 
         @if ($errors->any())
@@ -21,30 +21,30 @@
                 <div class="col">
                     @csrf
                     @method('PATCH')
-                    <label for="nome_empresa">Nome Fantasia:</label>
-                    <input type="text" class="form-control" name="nome_empresa"
-                        value="{{ $clientes->nome_empresa }}" />   </div>
+                    <label for="nome">Nome:</label>
+                    <input type="text" class="form-control" name="nome"
+                        value="{{ $clientes->nome }}" />   </div>
                 <div class="col">
-                <label for="cnpj">CNPJ:</label>
-                    <input type="text" class="form-control" id= "cnpj" name="cnpj" value="{{ $clientes->cnpj }}" /> 
+                <label for="cpf">CPF:</label>
+                    <input type="text" class="form-control" id= "cpf" name="cpf" value="{{ $clientes->cpf }}" /> 
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <label for="nome_responsavel">Responsável:</label>
-                    <input type="text" class="form-control" name="nome_responsavel"
-                        value="{{ $clientes->nome_responsavel }}" />
+                    <label for="data_nasc">Data de Nascimento:</label>
+                    <input type="date" class="form-control" name="data_nasc"
+                        value="{{ $clientes->data_nasc }}" />
                 </div>
                 <div class="col">
-                    <label for="email">Email:</label>
-                    <input type="text" class="form-control" name="email" value="{{ $clientes->email }}" />
+                    <label for="data_cadastro">Data de Cadastro:</label>
+                    <input type="date" class="form-control" name="data_cadastro" value="{{ $clientes->data_cadastro }}" />
                 </div>
             </div>
             <div class="form-group">
-                <label for="celular">Celular:</label>
-                <input type="text" class="form-control" id ="celular" name="celular" value="{{ $clientes->celular }}" />
+                <label for="renda">Renda:</label>
+                <input type="text" class="form-control" id ="renda" name="renda" value="{{ $clientes->renda }}" />
             </div>
-            <button type="submit" class="btn btn-primary">Salvar</button>
+            <button type="submit" class="btn btn-primary mt-3">Salvar</button>
         </form>
     </div>
 </div>

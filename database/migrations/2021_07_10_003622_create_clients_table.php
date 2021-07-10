@@ -19,7 +19,9 @@ class CreateClientsTable extends Migration
             $table->string('cpf', 14);
             $table->date('data_nasc');
             $table->date('data_cadastro');
-            $table->decimal('renda', 5,2);
+            // $table->decimal('renda', 5,2);
+            $table->integer('renda');
+
             $table->timestamps();
         });
     }
