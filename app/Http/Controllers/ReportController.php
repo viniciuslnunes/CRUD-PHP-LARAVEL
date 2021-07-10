@@ -2,10 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
+
+    protected $avarageIncome;
+
+    public function __construct()
+    {
+        $this->avarageIncome = Client::avg('renda');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,101 +24,38 @@ class ReportController extends Controller
      */
     public function index()
     {
-        return view('site.reports.index');
+        $clientsReport = [
+            'today' =>  $this->getTodayClients(),
+            'week' =>  $this->getCurrentWeekClients(),
+            'month' =>  $this->getCurrentMonthClients(),
+        ];
+
+        return view('site.reports.index', compact('clientsReport'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    private function getTodayClients(): object
     {
-        //
+        return Client::where('data_cadastro', date('Y-m-d'))
+            ->whereDate('data_nasc', '<', date('Y-m-d', strtotime('-18 years')))
+            ->where('renda', '>', $this->avarageIncome)
+            ->get();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    private function getCurrentWeekClients(): object
     {
-        //
+        return Client::where('data_cadastro', '>', Carbon::now()->startOfWeek())
+            ->where('data_cadastro', '<', Carbon::now()->endOfWeek())
+            ->whereDate('data_nasc', '<=', date('Y-m-d', strtotime('-18 years')))
+            ->where('renda', '>', $this->avarageIncome)
+            ->get();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    private function getCurrentMonthClients(): object
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-    public function search(Request $request)
-    {
-        $search_mes = $request->search_mes;
-        switch ($search_mes) {
-            case 'day':
-                # code...
-                break;
-            case 'week':
-                # code...
-                break;
-            default:
-                # code...
-                break;
-        }
-        // if ($search_mes === "day") {
-        //     $propostas = Proposta::with('cliente')
-        //         ->whereMonth('created_at', $search_mes)
-        //         ->where('user_id', '=', Auth::user()->id)
-        //         ->paginate(7);
-        // } else {
-        //     $propostas = Proposta::with('cliente')
-        //         ->where('cliente_id', 'like', '%' . $search_cliente . '%')
-        //         ->where('status', 'like', '%' . $search_status . '%')
-        //         ->where('user_id', '=', Auth::user()->id)
-        //         ->paginate(7);
-        // }
-        return view('reports.index');
+        return Client::whereYear('data_cadastro', date('Y'))
+            ->whereMonth('data_cadastro', date('m'))
+            ->whereDate('data_nasc', '<=', date('Y-m-d', strtotime('-18 years')))
+            ->where('renda', '>', $this->avarageIncome)
+            ->get();
     }
 }

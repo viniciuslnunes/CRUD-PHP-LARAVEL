@@ -24,6 +24,6 @@ class HomeController extends Controller
     public function index()
     {
         //Altera caminho de retorno da view
-        return view('home');
+        return view('site.clients.index');
     }
 }
