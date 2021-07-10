@@ -81,4 +81,33 @@ class ReportController extends Controller
     {
         //
     }
+
+    public function search(Request $request)
+    {
+        $search_mes = $request->search_mes;
+        switch ($search_mes) {
+            case 'day':
+                # code...
+                break;
+            case 'week':
+                # code...
+                break;
+            default:
+                # code...
+                break;
+        }
+        // if ($search_mes === "day") {
+        //     $propostas = Proposta::with('cliente')
+        //         ->whereMonth('created_at', $search_mes)
+        //         ->where('user_id', '=', Auth::user()->id)
+        //         ->paginate(7);
+        // } else {
+        //     $propostas = Proposta::with('cliente')
+        //         ->where('cliente_id', 'like', '%' . $search_cliente . '%')
+        //         ->where('status', 'like', '%' . $search_status . '%')
+        //         ->where('user_id', '=', Auth::user()->id)
+        //         ->paginate(7);
+        // }
+        return view('reports.index');
+    }
 }

@@ -26,7 +26,21 @@
             vertical-align: baseline;
             border-radius: 0.25rem;
         }
+
+        .badge-ui.success {
+            background-color: #198754;
+        }
+
+        .badge-ui.warning {
+            background-color: #ffc107;
+            color: black;
+        }
+
+        .badge-ui.danger {
+            background-color: #dc3545;
+        }
     </style>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container mx-auto">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

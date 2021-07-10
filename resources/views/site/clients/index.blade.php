@@ -45,14 +45,34 @@
         <tr>
             <th scope="col">Nome</th>
             <th scope="col">Renda</th>
+            <!-- <th scope="col">Mês</th>
+            <th scope="col">Dia</th>
+            <th scope="col">Semana</th> -->
             <th scope="col">Ações</th>
+
+
+
+
         </tr>
     </thead>
     <tbody>
         @foreach($clientes as $cliente)
         <tr>
             <td>{{$cliente->nome}}</td>
-            <td>{{$cliente->renda}}</td>
+            <td>@if($cliente->renda <= 900 ) <div class="badge-ui danger">{{$cliente->renda}}</div>
+                    @endif
+                    @if($cliente->renda > 900 && $cliente->renda < 2500)
+                    <div class="badge-ui warning">{{$cliente->renda}}</div>
+                    @endif
+                    @if($cliente->renda >= 2500)
+                    <div class="badge-ui success">{{$cliente->renda}}</div>
+                    @endif
+            </td>
+            <!-- <td>{{date('d-m-Y h:i:s', mktime(date('h'),date('i'),date('s'),date('m'),date('d')-30,date('Y')))."\n"}}</td>
+            <td>{{date('d-m-Y h:i:s', mktime(date('h'),date('i'),date('s'),date('m'),date('d'),date('Y')))."\n"}}</td>
+            <td>{{date('d-m-Y h:i:s', mktime(date('h'),date('i'),date('s'),date('m'),date('d')-7,date('Y')))."\n"}}</td> -->
+
+
             <td>
                 <form action="{{ route('clientes.destroy', $cliente->id)}}" method="post">
                     <a href="{{ route('clientes.show', $cliente->id)}}" class="btn btn-primary btn-sm">Detalhes</a>

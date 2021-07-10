@@ -13,7 +13,7 @@
                 </tr>
                 <tr>
                     <td class="title">CPF:</td>
-                    <td>{{$clientes->cnpj}}</td>
+                    <td>{{$clientes->cpf}}</td>
                     <td class="title">Data de Nascimento:</td>
                     <td>{{$clientes->data_nasc}}</td>
                 </tr>
