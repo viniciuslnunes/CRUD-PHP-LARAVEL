@@ -28,7 +28,7 @@
                         </div>
                         <div class="card-body">
                             <p class="fs-3 mb-0">
-                            @if (request()->query('filter'))
+                                @if (request()->query('filter'))
                                     {{ request()->query('filter') . ': ' . $clientsReport[request()->query('filter')]->count() }}
                                 @else
                                     @foreach ($clientsReport as $i => $report)
@@ -51,17 +51,50 @@
                                 <div class="col-4 text-center">B</div>
                                 <div class="col-4 text-center">C</div>
                             </div>
+                            @php
+                                if (request()->query('filter')) {
+                                    $classA = $clientsReport[request()->query('filter')]->filter(function ($report) {
+                                        return $report['renda'] <= 980;
+                                    });
+
+                                    $classB = $clientsReport[request()->query('filter')]->filter(function ($report) {
+                                        return $report['renda'] > 980 && $report['renda'] < 2500;
+                                    });
+
+                                    $classC = $clientsReport[request()->query('filter')]->filter(function ($report) {
+                                        return $report['renda'] > 2500;
+                                    });
+                                } else {
+                                    foreach ($clientsReport as $i => $report) {
+                                        $classA = $report->filter(function ($report) {
+                                            return $report['renda'] <= 980;
+                                        });
+
+                                        $classB = $report->filter(function ($report) {
+                                            return $report['renda'] > 980 && $report['renda'] < 2500;
+                                        });
+
+                                        $classC = $report->filter(function ($report) {
+                                            return $report['renda'] > 2500;
+                                        });
+                                    }
+                                }
+                            @endphp
                             <div class="row mt-2">
                                 <div class="col-4 text-center">
-                                    <div class="badge-ui bg-success">20</div>
-                                </div>
-                                <div class="col-4 text-center">
-                                    <div class="badge-ui bg-warning text-dark">
-                                        40
+                                    <div class="badge-ui bg-success">
+                                        {{ $classA->count() }}
                                     </div>
                                 </div>
                                 <div class="col-4 text-center">
-                                    <div class="badge-ui bg-danger">90</div>
+                                    <div class="badge-ui bg-warning text-dark">
+                                        {{ $classB->count() }}
+                                    </div>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <div class="badge-ui bg-danger">
+                                        {{ $classC->count() }}
+                                    </div>
                                 </div>
                             </div>
                         </div>

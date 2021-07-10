@@ -52,13 +52,13 @@
                         <a>Bem vindo(a), {{ auth()->user()->name ?? 'Convidado' }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('clientes.index') }}">Listagem de clientes</a>
+                        <a class="nav-link {{ Request::is('clientes') ? 'active' : '' }}" href="{{ route('clientes.index') }}">Listagem de clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('clientes.create') }}">Cadastro de clientes</a>
+                        <a class="nav-link {{ Request::is('clientes/create') ? 'active' : '' }}" aria-current="page" href="{{ route('clientes.create') }}">Cadastro de clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('relatorios.index') }}">Relatórios</a>
+                        <a class="nav-link {{ Request::is('relatorios*') ? 'active' : '' }}" href="{{ route('relatorios.index') }}">Relatórios</a>
                     </li>
                     <li class="nav-item">
                         <a class="mega-menu" href="{{ route('logout') }}" onclick="event.preventDefault();

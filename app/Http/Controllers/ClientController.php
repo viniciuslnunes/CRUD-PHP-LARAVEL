@@ -20,7 +20,7 @@ class ClientController extends Controller
 
         public function index()
     {
-        $clientes = Client::paginate(10);
+        $clientes = Client::where('nome', 'like', '%' . request()->search . '%')->paginate(10);
         return view('site.clients.index', compact("clientes"));
     }
 
