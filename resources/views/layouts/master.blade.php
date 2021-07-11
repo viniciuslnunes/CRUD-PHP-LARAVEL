@@ -17,7 +17,7 @@
     <style>
         .badge-ui {
             display: inline-block;
-            padding: 6px 7px 7px;
+            padding: 6px 10px;
             font-weight: 700;
             line-height: 1;
             color: #fff;

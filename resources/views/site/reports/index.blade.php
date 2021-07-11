@@ -2,12 +2,12 @@
 @section('title','Relatórios')
 
 @section('content')
-<div class="container mx-auto mt-4">
+<div class="container mx-auto mt-4 row g-3 border p-4 rounded mt-4 cards">
             <div class="col">
                 <div class="col-8 d-flex flex-row align-items-center">
                     <b>Relatórios</b>
                 </div>
-                <div class="col-6 mt-2">
+                <div class="col-12 mt-2">
                     <nav class="nav nav-pills flex-column flex-sm-row">
                         <a
                             class="text-sm-center time-button raise mx-2 {{ request()->query('filter') === 'month' ? 'active' : '' }}"
@@ -20,11 +20,11 @@
                     </nav>
                 </div>
             </div>
-            <div class="row mt-4 justify-content-between">
-                <div class="col-md-6 col-12">
+            <div class="mt-4 justify-content-between">
+                <div class="col-md-12 col-12">
                     <div class="card text-dark bg-light px-0 mb-4 cards">
                         <div class="card-header fw-bold">
-                            Clientes acima de 18 anos com renda média maior que a renda média de todos os clientes cadastrados deste {{ request()->query('filter') }}
+                            +18 anos com renda média maior que a renda média
                         </div>
                         <div class="card-body">
                             <p class="fs-3 mb-0">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-12">
+                <div class="col-md-12 col-12">
                     <div class="card text-dark bg-light px-0 mb-4 cards">
                         <div class="card-header fw-bold">
                             Quantidade de clientes por classe
@@ -82,17 +82,17 @@
                             @endphp
                             <div class="row mt-2">
                                 <div class="col-4 text-center">
-                                    <div class="badge-ui bg-success">
+                                    <div class="badge-ui bg-success cards">
                                         {{ $classA->count() }}
                                     </div>
                                 </div>
                                 <div class="col-4 text-center">
-                                    <div class="badge-ui bg-warning text-dark">
+                                    <div class="badge-ui bg-warning text-dark cards">
                                         {{ $classB->count() }}
                                     </div>
                                 </div>
                                 <div class="col-4 text-center">
-                                    <div class="badge-ui bg-danger">
+                                    <div class="badge-ui bg-danger cards">
                                         {{ $classC->count() }}
                                     </div>
                                 </div>
