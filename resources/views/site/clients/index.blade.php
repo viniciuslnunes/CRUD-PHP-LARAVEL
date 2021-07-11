@@ -8,6 +8,9 @@
         {{ Session::get('success') }}
     </div>
     @endif
+    <div class="card-header cards fw-bold mt-4">
+        Lista de Clientes
+    </div>
     <form action="" method="GET">
         <div class="form-outline" style="margin: 20px 0;">
             <input type="text" name="search" class="cards" placeholder="Pesquisar...">
@@ -26,9 +29,9 @@
         @foreach($clientes as $cliente)
         <tr class="tr-bottom">
             <td class="nome-cliente">{{$cliente->nome}}</td>
-            <td class="renda-cliente">@if($cliente->renda <= 900 ) <div class="badge-ui danger">R$ {{ round($cliente->renda, 0) }}</div>
+            <td class="renda-cliente">@if($cliente->renda <= 900 ) <div class="badge-ui danger cards">R$ {{ round($cliente->renda, 0) }}</div>
                     @endif
-                    @if($cliente->renda > 900 && $cliente->renda < 2500) <div class="badge-ui warning">R$ {{ round($cliente->renda, 0) }}</div>
+                    @if($cliente->renda > 900 && $cliente->renda < 2500) <div class="badge-ui warning cards">R$ {{ round($cliente->renda, 0) }}</div>
                         @endif
                         @if($cliente->renda >= 2500)
                         <div class="badge-ui success cards">R$ {{ round($cliente->renda, 0) }}</div>

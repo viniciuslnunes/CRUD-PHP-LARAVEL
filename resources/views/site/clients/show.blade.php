@@ -3,25 +3,28 @@
 
 
 @section('content')
-<div class="card">
-    <div class="card-body">
+<div class="cards">
+    <div class="container mx-auto mt-4 row g-3 border p-4 rounded mt-4 cards">
+        <div class="card-header cards fw-bold mb-4">
+            Detalhes do Cliente
+        </div>
         <table class="table table-list">
             <tbody>
-                <tr>
-                    <td class="title">Nome do cliente:</td>
-                    <td>{{$clientes->nome}}</td>
+                <tr class="cards">
+                    <td class="title bold fw-bold">Nome do cliente:</td>
+                    <td class="title">{{$clientes->nome}}</td>
                 </tr>
-                <tr>
-                    <td class="title">CPF:</td>
-                    <td>{{$clientes->cpf}}</td>
-                    <td class="title">Data de Nascimento:</td>
-                    <td>{{$clientes->data_nasc}}</td>
+                <tr class="cards" style="padding-top: 2.rem;">
+                    <td class="title fw-bold">CPF:</td>
+                    <td class="title">{{$clientes->cpf}}</td>
+                    <td class="title fw-bold">Data de Nascimento:</td>
+                    <td class="title">{{$clientes->data_nasc}}</td>
                 </tr>
-                <tr>
-                    <td class="title">Data de Cadastro:</td>
-                    <td>{{$clientes->data_cadastro}}</td>
-                    <td class="title">Renda:</td>
-                    <td>{{$clientes->renda}}</td>
+                <tr class="cards">
+                    <td class="title fw-bold">Data de Cadastro:</td>
+                    <td class="title">{{$clientes->data_cadastro}}</td>
+                    <td class="title fw-bold">Renda:</td>
+                    <td class="title">{{$clientes->renda}}</td>
                 </tr>
             </tbody>
         </table>

@@ -97,6 +97,11 @@
                 text-decoration: auto;
 
             }
+            td.title{
+                padding-top: 1.2rem;
+                padding-bottom: 1.2rem;
+
+            }
 
         @media(max-width: 767px) {
             .form-client {

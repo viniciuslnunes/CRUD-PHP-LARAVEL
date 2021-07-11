@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="card mt-4">
-    <div class="card-body">
+    <div class="card-body cards">
 
         @if ($errors->any())
         <div class="alert alert-danger">
@@ -22,27 +22,27 @@
                     @csrf
                     @method('PATCH')
                     <label for="nome">Nome:</label>
-                    <input type="text" class="form-control" name="nome"
+                    <input type="nome" class="form-control cards" name="nome"
                         value="{{ $clientes->nome }}" />   </div>
                 <div class="col">
                 <label for="cpf">CPF:</label>
-                    <input type="text" class="form-control" id= "cpf" name="cpf" value="{{ $clientes->cpf }}" /> 
+                    <input type="cpf" class="form-control cards" id= "cpf" name="cpf" value="{{ $clientes->cpf }}" /> 
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <label for="data_nasc">Data de Nascimento:</label>
-                    <input type="date" class="form-control" name="data_nasc"
+                    <input type="date" class="form-control cards" name="data_nasc"
                         value="{{ $clientes->data_nasc }}" />
                 </div>
                 <div class="col">
                     <label for="data_cadastro">Data de Cadastro:</label>
-                    <input type="date" class="form-control" name="data_cadastro" value="{{ $clientes->data_cadastro }}" />
+                    <input type="date" class="form-control cards" name="data_cadastro" value="{{ $clientes->data_cadastro }}" />
                 </div>
             </div>
             <div class="form-group">
                 <label for="renda">Renda:</label>
-                <input type="text" class="form-control" id ="renda" name="renda" value="{{ $clientes->renda }}" />
+                <input type="text" class="form-control cards" id ="renda" name="renda" value="{{ $clientes->renda }}" />
             </div>
             <button type="submit" class="btn btn-primary mt-3">Salvar</button>
         </form>

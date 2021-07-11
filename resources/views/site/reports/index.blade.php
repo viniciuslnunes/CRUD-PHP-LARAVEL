@@ -4,26 +4,27 @@
 @section('content')
 <div class="container mx-auto mt-4 row g-3 border p-4 rounded mt-4 cards">
             <div class="col">
-                <div class="col-8 d-flex flex-row align-items-center">
+                <div class="card-header cards fw-bold mb-4">
                     <b>Relatórios</b>
                 </div>
                 <div class="col-12 mt-2">
                     <nav class="nav nav-pills flex-column flex-sm-row">
                         <a
-                            class="text-sm-center time-button raise mx-2 {{ request()->query('filter') === 'month' ? 'active' : '' }}"
+                            style="margin-right: .5rem!important"
+                            class="text-sm-center time-button raise cards {{ request()->query('filter') === 'month' ? 'active' : '' }}"
                             aria-current="page"
                             href="{{ url('relatorios?filter=month')}}"
                             >Mês</a
                         >
-                        <a class="text-sm-center time-button raise mx-2 {{ request()->query('filter') === 'week' ? 'active' : '' }}" href="{{ url('relatorios?filter=week')}}">Semana</a>
-                        <a class="text-sm-center time-button raise mx-2 {{ request()->query('filter') === 'today' ? 'active' : '' }}" href="{{ url('relatorios?filter=today')}}">Hoje</a>
+                        <a  style="margin-right: .5rem!important" class="cards text-sm-center time-button raise {{ request()->query('filter') === 'week' ? 'active' : '' }}" href="{{ url('relatorios?filter=week')}}">Semana</a>
+                        <a  style="margin-right: .5rem!important" class="cards text-sm-center time-button raise {{ request()->query('filter') === 'today' ? 'active' : '' }}" href="{{ url('relatorios?filter=today')}}">Hoje</a>
                     </nav>
                 </div>
             </div>
             <div class="mt-4 justify-content-between">
                 <div class="col-md-12 col-12">
                     <div class="card text-dark bg-light px-0 mb-4 cards">
-                        <div class="card-header fw-bold">
+                        <div class="card-header cards fw-bold">
                             +18 anos com renda média maior que a renda média
                         </div>
                         <div class="card-body">
@@ -42,7 +43,7 @@
                 </div>
                 <div class="col-md-12 col-12">
                     <div class="card text-dark bg-light px-0 mb-4 cards">
-                        <div class="card-header fw-bold">
+                        <div class="card-header cards fw-bold">
                             Quantidade de clientes por classe
                         </div>
                         <div class="card-body d-flex flex-column">

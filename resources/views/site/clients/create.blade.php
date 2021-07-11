@@ -14,6 +14,9 @@
     @endif
     <form class="row g-3 border p-4 rounded mt-4 cards" method="POST" action="{{ route('clientes.store') }}">
         @csrf
+        <div class="card-header cards fw-bold">
+            Cadastrar Cliente
+        </div>
         <div class="col-md-6 col-lg-6">
             <label for="nome" class="form-label">Nome: </label>
             <input type="nome" class="form-control cards" name="nome" id="nome" required maxlength="150" value="{{ old('nome') }}"/>
