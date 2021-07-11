@@ -3,26 +3,26 @@
 
 @section('content')
 <div class="container mx-auto mt-4">
-            <div class="row">
+            <div class="col">
                 <div class="col-8 d-flex flex-row align-items-center">
                     <b>Relatórios</b>
                 </div>
-                <div class="col-4">
+                <div class="col-6 mt-2">
                     <nav class="nav nav-pills flex-column flex-sm-row">
                         <a
-                            class="text-sm-center nav-link {{ request()->query('filter') === 'month' ? 'active' : '' }}"
+                            class="text-sm-center time-button raise mx-2 {{ request()->query('filter') === 'month' ? 'active' : '' }}"
                             aria-current="page"
                             href="{{ url('relatorios?filter=month')}}"
                             >Mês</a
                         >
-                        <a class="text-sm-center nav-link {{ request()->query('filter') === 'week' ? 'active' : '' }}" href="{{ url('relatorios?filter=week')}}">Semana</a>
-                        <a class="text-sm-center nav-link {{ request()->query('filter') === 'today' ? 'active' : '' }}" href="{{ url('relatorios?filter=today')}}">Hoje</a>
+                        <a class="text-sm-center time-button raise mx-2 {{ request()->query('filter') === 'week' ? 'active' : '' }}" href="{{ url('relatorios?filter=week')}}">Semana</a>
+                        <a class="text-sm-center time-button raise mx-2 {{ request()->query('filter') === 'today' ? 'active' : '' }}" href="{{ url('relatorios?filter=today')}}">Hoje</a>
                     </nav>
                 </div>
             </div>
             <div class="row mt-4 justify-content-between">
                 <div class="col-md-6 col-12">
-                    <div class="card text-dark bg-light px-0 mb-4">
+                    <div class="card text-dark bg-light px-0 mb-4 cards">
                         <div class="card-header fw-bold">
                             Clientes acima de 18 anos com renda média maior que a renda média de todos os clientes cadastrados deste {{ request()->query('filter') }}
                         </div>
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-12">
-                    <div class="card text-dark bg-light px-0 mb-4">
+                    <div class="card text-dark bg-light px-0 mb-4 cards">
                         <div class="card-header fw-bold">
                             Quantidade de clientes por classe
                         </div>

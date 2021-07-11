@@ -39,6 +39,94 @@
         .badge-ui.danger {
             background-color: #dc3545;
         }
+
+        .cards {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            border-radius: 5px;
+            /* width: auto;
+            height: auto; */
+            /* 5px rounded corners */
+        }
+
+        .raise:hover,
+        .raise:focus {
+            box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+            transform: translateY(-0.25em);
+            background-color: black;
+            border: 1px solid black;
+            color: white;
+        }
+
+        td.nome-cliente {
+            padding-top: 20px;
+        }
+
+        td.renda-cliente {
+            padding-top: 17px;
+        }
+
+        input[type=text] {
+            width: 130px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            padding: 8px 16px;
+            transition: width 0.4s ease-in-out;
+        }
+
+        input[type=text]:focus {
+            width: 100%;
+        }
+
+        .tr-bottom {
+            height: 65px !important;
+        }
+        
+        .time-button {
+                padding: .5rem 1rem;
+                transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+                display: block;
+                color: black;
+                border: 1px solid black;
+                border-radius: 5px;
+                text-decoration: auto;
+
+            }
+
+        @media(max-width: 767px) {
+            .form-client {
+                width: auto;
+                height: 125px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            td.nome-cliente {
+                padding-top: 60px;
+            }
+
+            td.renda-cliente {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 141px;
+            }
+
+
+
+            /* Add rounded corners to the top left and the top right corner of the image */
+            img {
+                border-radius: 5px 5px 0 0;
+            }
+
+            .time-button {
+                margin-top: 10px;
+            }
     </style>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
